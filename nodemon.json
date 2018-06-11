@@ -1,0 +1,18 @@
+{
+  "restartable": "rs",
+  "ignore": [],
+  "verbose": true,
+  "execMap": {
+    "js": "node --harmony"
+  },
+  "events": {
+    "restart": "echo 'mock文件修改了, 重新启动mock服务....(:'"
+  },
+  "watch": [
+    "_mock/"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js"
+}

@@ -1,7 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const devMiddleware = require('webpack-dev-middleware');
-
 // import webpackHotMiddleware from 'webpack-hot-middleware';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -19,14 +17,20 @@ const config = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
-    hot: true
+    hot: true,
+    proxy: {
+      '/api/*': {
+        target: 'http://localhost:3001',
+        secure: false,
+      }
+    }
   },
   module: {
     rules: [
       {test: /\.(js|jsx)$/,
         use: {
           loader: 'babel-loader',
-          options: {
+          query: {
             presets: ['env', 'react'],
           }
         }
@@ -45,10 +49,4 @@ const config = {
   ]
 }
 
-const compiler = webpack(config);
-const express = require('express');
-const app = express();
-app.use(devMiddleware(compiler, {
-  publicPath: config.output.publicPath
-}));
-app.listen(3000, () => console.log('Example app listening on port 3000!'));
+module.exports = config;

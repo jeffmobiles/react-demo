@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node webpack.config.js"
+    "dev": "node server.js && nodemon "
+  },
+  "nodemonConfig": {
+    "ignore": ["test/*", "docs/*"],
+    "delay": "2500"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +19,8 @@
     "clean-webpack-plugin": "^0.1.19",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^3.2.0",
+    "mockjs": "^1.0.1-beta3",
+    "nodemon": "^1.17.5",
     "react-scripts": "^1.1.4",
     "rimraf": "^2.6.2",
     "webpack": "^4.12.0",

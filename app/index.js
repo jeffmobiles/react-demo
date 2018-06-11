@@ -9,7 +9,6 @@ import App from './app';
 // const store = createStore(reducer);
 // const action = type => store.dispatch({type});
 
-
 ReactDOM.render(
   <App />,
   document.getElementById('app')
